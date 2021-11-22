@@ -1,0 +1,12 @@
+.header-container {
+  color: #fff;
+}
+.footer-container {
+  height: 55px;
+  background-color: #373d41;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}

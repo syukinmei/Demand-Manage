@@ -1,0 +1,9 @@
+#root {
+  height: 100%;
+}
+#root .ant-pro-global-header {
+  background: #373d41;
+}
+#root .ant-layout-content {
+  padding: 20px;
+}
