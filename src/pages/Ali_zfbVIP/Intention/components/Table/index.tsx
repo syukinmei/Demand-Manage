@@ -5,7 +5,6 @@ import { IntentionContext } from '../../context';
 
 export default function index() {
     const { reqdata } = useContext(IntentionContext);
-    console.log(reqdata,'??')
     return (
         <div>
             <Table columns={columns} dataSource={reqdata.data} />
