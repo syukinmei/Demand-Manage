@@ -1,70 +1,81 @@
-import { Form, Input, Select, Tooltip, Button, Space, Typography } from 'antd';
+import { Table } from 'antd';
 
-const { Option } = Select;
+const columns = [
+  {
+    title: 'Full Name',
+    width: 100,
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Age',
+    width: 100,
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Column 1',
+    dataIndex: 'address',
+    key: '1',
+  },
+  {
+    title: 'Column 2',
+    dataIndex: 'address',
+    key: '2',
+  },
+  {
+    title: 'Column 3',
+    dataIndex: 'address',
+    key: '3',
+  },
+  {
+    title: 'Column 4',
+    dataIndex: 'address',
+    key: '4',
+  },
+  {
+    title: 'Column 5',
+    dataIndex: 'address',
+    key: '5',
+  },
+  {
+    title: 'Column 6',
+    dataIndex: 'address',
+    key: '6',
+  },
+  {
+    title: 'Column 7',
+    dataIndex: 'address',
+    key: '7',
+  },
+  { title: 'Column 8', dataIndex: 'address', key: '8' },
+  {
+    title: 'Action',
+    key: 'operation',
+    render: () => <a>action</a>,
+  },
+];
 
-export const  Demo = () => {
-  const onFinish = (values:any) => {
-    console.log('Received values of form: ', values);
-  };
-
+export const Demo = () => {
+  console.log(data)
   return (
-    <Form name="complex-form" onFinish={onFinish} labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
-      <Form.Item label="Username">
-        <Space>
-          <Form.Item
-            name="username"
-            noStyle
-            rules={[{ required: true, message: 'Username is required' }]}
-          >
-            <Input style={{ width: 160 }} placeholder="Please input" />
-          </Form.Item>
-          <Tooltip title="Useful information">
-            <Typography.Link href="#API">Need Help?</Typography.Link>
-          </Tooltip>
-        </Space>
-      </Form.Item>
-      <Form.Item label="Address">
-        <Input.Group compact>
-          <Form.Item
-            name={['address', 'province']}
-            noStyle
-            rules={[{ required: true, message: 'Province is required' }]}
-          >
-            <Select placeholder="Select province">
-              <Option value="Zhejiang">Zhejiang</Option>
-              <Option value="Jiangsu">Jiangsu</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name={['address', 'street']}
-            noStyle
-            rules={[{ required: true, message: 'Street is required' }]}
-          >
-            <Input style={{ width: '50%' }} placeholder="Input street" />
-          </Form.Item>
-        </Input.Group>
-      </Form.Item>
-      <Form.Item label="BirthDate" style={{ marginBottom: 0 }}>
-        <Form.Item
-          name="year"
-          rules={[{ required: true }]}
-          style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
-        >
-          <Input placeholder="Input birth year" />
-        </Form.Item>
-        <Form.Item
-          name="month"
-          rules={[{ required: true }]}
-          style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
-        >
-          <Input placeholder="Input birth month" />
-        </Form.Item>
-      </Form.Item>
-      <Form.Item label=" " colon={false}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+    <Table columns={columns} dataSource={data} />
   );
 };
+
+type DataType = {
+  key: number;
+  name: string;
+  age: number;
+  address: string;
+}
+
+const data: DataType[] = [];
+for (let i = 0; i < 500; i++) {
+  data.push({
+    key: i,
+    name: `Edrward ${i}`,
+    age: 32,
+    address: `London Park no. ${i}`,
+  });
+}

@@ -146,6 +146,30 @@ export default {
         }
     },
 
+    // 查看意图对应钩子
+    'GET /api/intentHook': {
+        data: [
+            {
+                key:'1',
+                hooksName: '钩子名称钩子名称',
+                hooksID: 'HK_10086',
+                state: '在线',
+                type: '红包',
+                indate: '2021-08-13',
+                owner: '漪沦',
+            },
+            {
+                key:'2',
+                hooksName: '钩子名称噜噜噜',
+                hooksID: 'HK_10010',
+                state: '在线',
+                type: '红包',
+                indate: '2021-11-22',
+                owner: '潇伊',
+            }
+        ]
+    },
+
     // GET 可忽略
     '/api/users/1': { id: 1 },
 

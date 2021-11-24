@@ -12,7 +12,7 @@ export default function CrowdModal() {
 
     // 点击确认的回调
     const handleOk = () => {
-        // setIsModalVisible(false);
+        setIsModalVisible(false);
     };
 
     // 点击取消的回调

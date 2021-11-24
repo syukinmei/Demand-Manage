@@ -3,6 +3,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { format_number } from '../../context';
 import CrowdModal from '../TableModal/CrowdModal';
 import ServeModal from '../TableModal/ServeModal';
+import HooksModal from '../TableModal/HooksModal';
 
 const moreAction = (
     <div>
@@ -159,7 +160,7 @@ export const columns = [
                 <Space size={0}>
                     <CrowdModal />
                     <ServeModal />
-                    <Button type="link">查看钩子</Button>
+                    <HooksModal />
                     <Popover content={moreAction} placement="bottom">
                         <Button type="link">更多<DownOutlined /></Button>
                     </Popover>
