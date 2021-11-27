@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Tabel from './components/Table';
+import Fillter from './components/Filter';
 import { IntentionContext } from './context';
 import { Empty, Button } from 'antd';
 export default function intention() {
@@ -22,7 +23,7 @@ export default function intention() {
         <div>
             <IntentionContext.Provider value={{ reqdata }}>
                 意图管理
-                <br />
+                <Fillter />
                 <br />
                 {
                     error && error ? (
