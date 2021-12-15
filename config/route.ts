@@ -23,9 +23,20 @@ export const routes = [
                 component: '@/pages/Ali_zfbVIP/Intention',
             },
             {
-                path:'/ali/missing',
-                name:'待建',
-                component:'@/pages/Ali_zfbVIP/missing'
+                path: '/ali/spyon',
+                name: 'IP侦查(天枢)',
+                component: '@/pages/Ali_zfbVIP/IPspyon/Search',
+                // routes: [
+                //     { path: '/ali/spyon/details', component: '@/pages/Ali_zfbVIP/IPspyon/Details', }
+                // ]
+            },
+            {
+                path: '/ali/spyon/details', component: '@/pages/Ali_zfbVIP/IPspyon/Details', name: '详情页',
+            },
+            {
+                path: '/ali/missing',
+                name: '待建',
+                component: '@/pages/Ali_zfbVIP/missing'
             }
         ]
     },
