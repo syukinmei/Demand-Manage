@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Button, Input, Space } from 'antd';
 import BasicInfo from './basicInfo';
+import AllSides from './Allsides';
 const Details = () => {
     // 点击查询事件
     const onSearch = value => {
@@ -23,6 +24,7 @@ const Details = () => {
                     onSearch={onSearch}
                 />
             </Space>
+            <AllSides />
             <BasicInfo />
         </div>
     )
