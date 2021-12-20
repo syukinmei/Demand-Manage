@@ -1,0 +1,23 @@
+.StatisticBox {
+  padding: 15px;
+  margin: 20px 0 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+.riskModal {
+  display: flex;
+  margin-top: 20px;
+}
+.riskModal-title {
+  width: 90px;
+}
+.riskModal-info {
+  width: 450px;
+}
+.anchor-Box {
+  width: 200px;
+  position: fixed;
+  top: 100px;
+  right: 5px;
+}
