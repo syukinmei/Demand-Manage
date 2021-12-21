@@ -5,12 +5,14 @@ import { data7, data8 } from './config';
 
 const AssociatedInfo = () => {
   return (
-    <Card title="关联信息" style={{ marginTop: '30px', width: 1100 }}>
-      <h3>关联到赌博/欺诈情报</h3>
-      <br />
-      <Table columns={Associated_A_columns} dataSource={data7} />
-      <Table columns={Associated_B_columns} dataSource={data8} />
-    </Card>
+    <div id="AssociatedInfo">
+      <Card title="关联信息" style={{ marginTop: '30px', width: 1100 }}>
+        <h3>关联到赌博/欺诈情报</h3>
+        <br />
+        <Table columns={Associated_A_columns} dataSource={data7} />
+        <Table columns={Associated_B_columns} dataSource={data8} />
+      </Card>
+    </div>
   );
 };
 

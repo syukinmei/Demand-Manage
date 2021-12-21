@@ -5,9 +5,11 @@ import { data6 } from './config';
 
 const GamblerFind = () => {
   return (
-    <Card title="赌客发现" style={{ marginTop: '30px', width: 1100 }}>
-      <Table columns={gambler_find_columns} dataSource={data6} />
-    </Card>
+    <div id="GamblerFind">
+      <Card title="赌客发现" style={{ marginTop: '30px', width: 1100 }}>
+        <Table columns={gambler_find_columns} dataSource={data6} />
+      </Card>
+    </div>
   );
 };
 

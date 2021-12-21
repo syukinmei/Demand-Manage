@@ -17,7 +17,7 @@ const AllSides = () => {
     setShowTable(e.target.value);
   };
   return (
-    <div style={{ marginTop: '30px', width: 1100 }}>
+    <div id="AllSides" style={{ marginTop: '30px', width: 1100 }}>
       <Card title="四方分析">
         <Tag color="blue">四方网站</Tag>
         <br />

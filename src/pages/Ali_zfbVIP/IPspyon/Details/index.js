@@ -5,13 +5,11 @@ import AllSides from './Allsides';
 import GamblerFind from './GamblerFind';
 import AssociatedInfo from './AssociatedInfo';
 import './index.less';
+
 const Details = () => {
   // 点击查询事件
   const onSearch = (value) => {
     console.log(value);
-  };
-  const handleAnchorClick = (e) => {
-    e.preventDefault();
   };
   return (
     <div>
@@ -31,22 +29,17 @@ const Details = () => {
         />
       </Space>
       <div className="anchor-Box">
-        <Anchor
-          onClick={handleAnchorClick}
-          getContainer={() => document.getElementById('AnchorBox')}
-        >
+        <Anchor targetOffset={50}>
           <Anchor.Link href="#BasicInfo" title="基本信息" />
           <Anchor.Link href="#AllSides" title="四方分析" />
           <Anchor.Link href="#GamblerFind" title="赌客发现" />
           <Anchor.Link href="#AssociatedInfo" title="关联信息" />
         </Anchor>
       </div>
-      <div id="AnchorBox">
-        <BasicInfo id="BasicInfo" />
-        <AllSides id="AllSides" />
-        <GamblerFind />
-        <AssociatedInfo />
-      </div>
+      <BasicInfo />
+      <AllSides />
+      <GamblerFind />
+      <AssociatedInfo />
     </div>
   );
 };

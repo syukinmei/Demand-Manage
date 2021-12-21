@@ -12,42 +12,44 @@ const BasiceInfo = () => {
     console.log(key);
   };
   return (
-    <Card title="基本信息" style={{ width: 1100 }}>
-      <Descriptions title={<Tag color="blue">来自网络</Tag>}>
-        <Descriptions.Item label="相关URL">
-          http://www.yuque.net
-        </Descriptions.Item>
-        <Descriptions.Item label="子域名">
-          http://www.yuque.net
-        </Descriptions.Item>
-        <Descriptions.Item label="域名服务商">
-          厦门易名科技股份有限公司
-        </Descriptions.Item>
-        <Descriptions.Item label="网页标题">
-          小数支付-轻松支付
-        </Descriptions.Item>
-        <Descriptions.Item label="解析IP">WERIOUEW239</Descriptions.Item>
-        <Descriptions.Item label="通信样本">代码包</Descriptions.Item>
-        <Descriptions.Item label="注册邮箱">aaabbb@xxx.com</Descriptions.Item>
-        <Descriptions.Item label="注册时间">
-          2021-12-15 14:24:32
-        </Descriptions.Item>
-        <Descriptions.Item label="过期时间">
-          2021-12-28 16:56:32
-        </Descriptions.Item>
-      </Descriptions>
-      <Tabs defaultActiveKey="1" onChange={TabsCallback}>
-        <Tabs.TabPane tab="域名解析" key="1">
-          {DN_analysis()}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="whois信息" key="2">
-          {whois()}
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="相关样本" key="3">
-          <Table columns={basics_sample_columns} dataSource={data1} />
-        </Tabs.TabPane>
-      </Tabs>
-    </Card>
+    <div id="BasicInfo">
+      <Card title="基本信息" style={{ width: 1100 }}>
+        <Descriptions title={<Tag color="blue">来自网络</Tag>}>
+          <Descriptions.Item label="相关URL">
+            http://www.yuque.net
+          </Descriptions.Item>
+          <Descriptions.Item label="子域名">
+            http://www.yuque.net
+          </Descriptions.Item>
+          <Descriptions.Item label="域名服务商">
+            厦门易名科技股份有限公司
+          </Descriptions.Item>
+          <Descriptions.Item label="网页标题">
+            小数支付-轻松支付
+          </Descriptions.Item>
+          <Descriptions.Item label="解析IP">WERIOUEW239</Descriptions.Item>
+          <Descriptions.Item label="通信样本">代码包</Descriptions.Item>
+          <Descriptions.Item label="注册邮箱">aaabbb@xxx.com</Descriptions.Item>
+          <Descriptions.Item label="注册时间">
+            2021-12-15 14:24:32
+          </Descriptions.Item>
+          <Descriptions.Item label="过期时间">
+            2021-12-28 16:56:32
+          </Descriptions.Item>
+        </Descriptions>
+        <Tabs defaultActiveKey="1" onChange={TabsCallback}>
+          <Tabs.TabPane tab="域名解析" key="1">
+            {DN_analysis()}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="whois信息" key="2">
+            {whois()}
+          </Tabs.TabPane>
+          <Tabs.TabPane tab="相关样本" key="3">
+            <Table columns={basics_sample_columns} dataSource={data1} />
+          </Tabs.TabPane>
+        </Tabs>
+      </Card>
+    </div>
   );
 };
 

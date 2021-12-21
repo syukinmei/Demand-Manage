@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Table, Anchor } from 'antd';
 
 const columns = [
   {
@@ -57,9 +57,25 @@ const columns = [
 ];
 
 export const Demo = () => {
-  console.log(data)
+  console.log(data);
   return (
-    <Table columns={columns} dataSource={data} />
+    <>
+      <Anchor>
+        <Anchor.Link href="#1" title="aaah1" />
+        <Anchor.Link href="#2" title="h2" />
+        <Anchor.Link href="#3" title="h3" />
+        <Anchor.Link href="#4" title="h4" />
+        <Anchor.Link href="#test" title="??" />
+      </Anchor>
+      <h1 id="test">aa</h1>
+      <Table columns={columns} dataSource={data} />
+      <div>
+        <h1 id="1">1</h1>
+        <h1 id="2">2</h1>
+        <h1 id="3">3</h1>
+        <h1 id="4">4</h1>
+      </div>
+    </>
   );
 };
 
@@ -68,7 +84,7 @@ type DataType = {
   name: string;
   age: number;
   address: string;
-}
+};
 
 const data: DataType[] = [];
 for (let i = 0; i < 500; i++) {
