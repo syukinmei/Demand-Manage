@@ -1,23 +1,12 @@
-.StatisticBox {
-  padding: 15px;
-  margin: 20px 0 30px;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
+.search_Box {
+  width: 900px;
+  min-height: 450px;
+  background-color: #fff;
+  padding: 30px 50px 0;
 }
-.riskModal {
-  display: flex;
-  margin-top: 20px;
+.search_Box .num {
+  font-weight: bolder;
 }
-.riskModal-title {
-  width: 90px;
-}
-.riskModal-info {
-  width: 450px;
-}
-.anchor-Box {
-  width: 200px;
-  position: fixed;
-  top: 100px;
-  right: 5px;
+.search_Box .value {
+  color: #888;
 }
