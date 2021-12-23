@@ -5,7 +5,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  
+
   routes,
 
   fastRefresh: {},
@@ -17,5 +17,11 @@ export default defineConfig({
     locale: true,
     layout: 'side',
     logo: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3670654963,2180428618&fm=26&gp=0.jpg',
+  },
+
+  dva: {
+    // immer 可开可不开，true表示reducer中state可以直接修改，否则state是只读的
+    immer: false,
+    hmr: false,
   },
 });

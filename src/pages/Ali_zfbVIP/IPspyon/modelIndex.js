@@ -12,4 +12,16 @@ useEffect(() => {
 }, []);
 
 // export default connect(state => state)('组件')
-// export default connect(state => state.ipSpyon)('组件')
+// export default connect(state => state.ipSpyon)('组件') // => 空间名
+
+// 2
+
+const component = (props) => {
+  props.dispatch({
+    type: '', // 用于找effects中的方法  数据块名称/effects中方法名
+    params: '',
+  });
+  return <div></div>;
+};
+
+connect()(component);

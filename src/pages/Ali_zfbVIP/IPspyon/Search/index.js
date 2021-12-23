@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button,
   Breadcrumb,
@@ -12,7 +12,15 @@ import {
   Empty,
 } from 'antd';
 import style from './index.less';
-const Search = () => {
+// dva
+import { connect } from 'umi';
+const Search = (props) => {
+  useEffect(() => {
+    props.dispatch({
+      type: 'ipSpyonSearch/getData',
+      params: 3,
+    });
+  }, []);
   const [form] = Form.useForm();
   // 搜索框的方法
   const onFinish = () => {
@@ -99,4 +107,5 @@ const Search = () => {
     </div>
   );
 };
-export default React.memo(Search);
+// export default React.memo(Search);
+export default connect()(React.memo(Search));
