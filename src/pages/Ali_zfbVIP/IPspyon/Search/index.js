@@ -14,6 +14,7 @@ import {
 import style from './index.less';
 // dva
 import { connect } from 'umi';
+import AssociatedInfo from './AssociatedInfo';
 const Search = (props) => {
   useEffect(() => {
     props.dispatch({
@@ -103,6 +104,7 @@ const Search = (props) => {
           <Empty />
         )}
       </div>
+      <AssociatedInfo />
       <Button onClick={onSearch}>跳转</Button>
     </div>
   );

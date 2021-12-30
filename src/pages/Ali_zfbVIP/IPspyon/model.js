@@ -1,4 +1,5 @@
 import { message } from 'antd';
+import { data3 } from './Details/config';
 const add = (value) => {
   return value + 1;
 };
@@ -8,7 +9,8 @@ const ipSpyon_searchModel = {
 
   state: {
     // 数据
-    data: [],
+    data: data3,
+    total: 448,
   },
 
   effects: {

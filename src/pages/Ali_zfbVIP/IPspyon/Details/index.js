@@ -38,7 +38,8 @@ const Details = () => {
       </div>
       <BasicInfo />
       <AllSides />
-      <GamblerFind />
+      {/* 暂时砍掉
+      <GamblerFind />  */}
       <AssociatedInfo />
     </div>
   );
