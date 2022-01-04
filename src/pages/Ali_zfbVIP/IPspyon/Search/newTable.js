@@ -43,4 +43,5 @@ const NewTable = (props) => {
   );
 };
 
-export default connect((state) => state.ipSpyon)(React.memo(NewTable));
+// export default connect((state) => state.ipSpyon)(React.memo(NewTable));
+export default React.memo(NewTable);

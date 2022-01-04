@@ -1,5 +1,7 @@
 import { Tag, Modal, Button } from 'antd';
 import './index.less';
+import React, { useState, useMemo, useEffect } from 'react';
+import NewTable from '../Search/newTable';
 
 export const basics_sample_columns = [
   {
@@ -270,79 +272,191 @@ export const data3 = [
   },
 ];
 
-export const test_columns = [
+export const test_columns = (props) => {
+  console.log(props, '???');
+  return [
+    {
+      title: 'User_ID',
+      dataIndex: 'userId',
+      key: 'userId',
+      width: 190,
+      fixed: true,
+    },
+    {
+      title: '名字',
+      dataIndex: 'name',
+      key: 'name',
+      width: 80,
+    },
+    {
+      title: '特征',
+      dataIndex: 'feature',
+      key: 'feature',
+      width: 100,
+    },
+    {
+      title: '总金额',
+      dataIndex: 'amount',
+      key: 'amount',
+      width: 100,
+      sorter: (a, b) => a.amount - b.amount,
+    },
+    {
+      title: '身份证号码',
+      dataIndex: 'IDcard',
+      key: 'IDcard',
+      width: 190,
+    },
+    {
+      title: '交易次数',
+      dataIndex: 'count',
+      key: 'count',
+      width: 100,
+      sorter: (a, b) => a.count - b.count,
+      render: (text) => {
+        const showModal = () => {
+          setIsModalVisible(true);
+        };
+        const [isModalVisible, setIsModalVisible] = useState(false);
+
+        const handleOk = () => {
+          setIsModalVisible(false);
+        };
+
+        const handleCancel = () => {
+          setIsModalVisible(false);
+        };
+
+        const [page, setPage] = useState(1); //页码
+        const [pagesize, setPagesize] = useState(5); //每页条数;
+        const [showData, setShowData] = useState({ data: [], totalCount: 40 }); //拉取数据的
+
+        const handleChangePage = (value) => {
+          setPage(value);
+        };
+        const handleChangeRowsPerPage = (value) => {
+          setPagesize(value);
+        };
+
+        const pagerObj = useMemo(() => {
+          return {
+            page,
+            pagesize,
+            count: showData?.totalCount || 0,
+            onPageChange: handleChangePage, //控制页码的方法
+            onPagesizeChange: handleChangeRowsPerPage, //每页的个数
+          };
+        }, [
+          page,
+          pagesize,
+          showData?.totalCount,
+          handleChangePage,
+          handleChangeRowsPerPage,
+        ]);
+
+        useEffect(() => {
+          console.log(page, pagesize);
+          // props.dispatch({
+          //   type: 'ipSpyon/queryRelatedGamble',
+          //   params: props.currentUrl,
+          // });
+
+          // props.dispatch({
+          //   type: 'ipSpyon/queryRelatedFraud',
+          //   params: props.currentUrl,
+          // });
+        }, [page, pagesize]);
+        return (
+          <>
+            <Button onClick={showModal} type="link">
+              {text}
+            </Button>
+            <Modal
+              title="交易次数详情"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <NewTable
+                pager={pagerObj}
+                columns={text_transaction_columns}
+                // dataSource={props.relatedGamble}
+                dataSource={[
+                  {
+                    D: 'a',
+                    A: 'a',
+                    B: 'b',
+                    C: 'c',
+                    E: 'e',
+                  },
+                ]}
+                rowKey={(record) => record.id}
+              />
+            </Modal>
+          </>
+        );
+      },
+    },
+    {
+      title: '最早支付时间',
+      dataIndex: 'firstTime',
+      key: 'firstTime',
+      width: 190,
+    },
+    {
+      title: '最晚支付时间',
+      dataIndex: 'lastTime',
+      key: 'lastTime',
+      width: 190,
+    },
+    {
+      title: '落地位置',
+      dataIndex: 'position',
+      key: 'position',
+      width: 190,
+    },
+    {
+      title: '是否有风险',
+      dataIndex: 'risk',
+      key: 'risk',
+      width: 120,
+      align: 'center',
+      render: (text) =>
+        text ? (
+          <Button onClick={countDown} type="link">
+            是
+          </Button>
+        ) : (
+          <div>否</div>
+        ),
+    },
+  ];
+};
+const text_transaction_columns = [
   {
     title: 'User_ID',
-    dataIndex: 'userId',
-    key: 'userId',
-    width: 190,
-    fixed: true,
+    dataIndex: 'A',
+    key: 'A',
   },
   {
-    title: '名字',
-    dataIndex: 'name',
-    key: 'name',
-    width: 80,
-  },
-  {
-    title: '特征',
-    dataIndex: 'feature',
-    key: 'feature',
-    width: 100,
+    title: '姓名',
+    dataIndex: 'B',
+    key: 'B',
   },
   {
     title: '总金额',
-    dataIndex: 'amount',
-    key: 'amount',
-    width: 100,
-    sorter: (a, b) => a.amount - b.amount,
-  },
-  {
-    title: '身份证号码',
-    dataIndex: 'IDcard',
-    key: 'IDcard',
-    width: 190,
-  },
-  {
-    title: '交易次数',
-    dataIndex: 'count',
-    key: 'count',
-    width: 100,
-    sorter: (a, b) => a.count - b.count,
-    render: (text) => <Button type="link">{text}</Button>,
+    dataIndex: 'C',
+    key: 'C',
   },
   {
     title: '最早支付时间',
-    dataIndex: 'firstTime',
-    key: 'firstTime',
-    width: 190,
-  },
-  {
-    title: '最晚支付时间',
-    dataIndex: 'lastTime',
-    key: 'lastTime',
-    width: 190,
+    dataIndex: 'D',
+    key: 'D',
   },
   {
     title: '落地位置',
-    dataIndex: 'position',
-    key: 'position',
-    width: 190,
-  },
-  {
-    title: '是否有风险',
-    dataIndex: 'risk',
-    key: 'risk',
-    width: 120,
-    align: 'center',
-    render: (text) =>
-      text ? (
-        <Button onClick={countDown} type="link">
-          是
-        </Button>
-      ) : (
-        <div>否</div>
-      ),
+    dataIndex: 'E',
+    key: 'E',
   },
 ];
 // 是否有风险标签的modal
@@ -366,6 +480,11 @@ function countDown() {
   });
 }
 // 疑似支付通道测试账号下的交易次数modal
+// function tradesModal() {
+//   const modal = Modal.confirm({
+
+//   })
+// }
 
 export const data4 = [
   {
