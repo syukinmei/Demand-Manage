@@ -13,7 +13,7 @@ import {
 } from 'antd';
 import style from './index.less';
 // dva
-import { connect } from 'umi';
+import { connect, history } from 'umi';
 import AssociatedInfo from './AssociatedInfo';
 const Search = (props) => {
   useEffect(() => {
@@ -29,7 +29,18 @@ const Search = (props) => {
   };
   // 历史记录查询方法
   const historyQuery = (value) => {
-    console.log(value);
+    // history.push({
+    //   pathname: '/ali/spyon/details', query: {
+    //     url: value
+    //   },
+    //   state: {
+    //     title: '随便写写1',
+    //     xq: '随便写写2'
+    //   }
+    // })
+    // history.push(`/ali/spyon/details?url=${value}`)
+
+    history.push(`/ali/spyon/details/${value}`);
   };
 
   // 页面跳转

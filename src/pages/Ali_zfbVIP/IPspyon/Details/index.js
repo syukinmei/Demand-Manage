@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Breadcrumb, Anchor, Input, Space, Row, Col } from 'antd';
 import BasicInfo from './basicInfo';
 import AllSides from './Allsides';
 import GamblerFind from './GamblerFind';
 import AssociatedInfo from './AssociatedInfo';
 import './index.less';
+import { history } from 'umi';
 
-const Details = () => {
+const Details = (props) => {
+  // console.log(props.location.query.url)
+  // console.log(props.location.state)
+  console.log(props.match.params.url);
   // 点击查询事件
   const onSearch = (value) => {
-    console.log(value);
+    history.push(`/ali/spyon/details/${value}`);
   };
   return (
     <div

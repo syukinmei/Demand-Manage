@@ -13,7 +13,7 @@ export const routes = [
   },
   {
     path: '/ali',
-    name: '阿里巴巴',
+    name: 'AL妈妈',
     icon: 'Alibaba',
     // routes 就是二级路由
     routes: [
@@ -31,7 +31,7 @@ export const routes = [
         // ]
       },
       {
-        path: '/ali/spyon/details',
+        path: '/ali/spyon/details/:url',
         component: '@/pages/Ali_zfbVIP/IPspyon/Details',
         name: '详情页',
       },

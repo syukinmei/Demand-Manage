@@ -273,7 +273,7 @@ export const data3 = [
 ];
 
 export const test_columns = (props) => {
-  console.log(props, '???');
+  console.log(props, 'config里的props');
   return [
     {
       title: 'User_ID',
