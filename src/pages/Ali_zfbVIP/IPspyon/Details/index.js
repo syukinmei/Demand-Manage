@@ -12,9 +12,13 @@ const Details = () => {
     console.log(value);
   };
   return (
-    <>
+    <div
+      style={{
+        width: '1250px',
+      }}
+    >
       <Row>
-        <Col flex={4}>
+        <Col flex={10}>
           <div>
             <Breadcrumb>
               <Breadcrumb.Item>网站/IP</Breadcrumb.Item>
@@ -37,18 +41,19 @@ const Details = () => {
             <AssociatedInfo />
           </div>
         </Col>
-        <Col flex={1}>
+        <Col flex={2}>
           {/* <div className="anchor-Box"> */}
-          <Anchor targetOffset={50}>
-            <Anchor.Link href="#BasicInfo" title="基本信息" />
-            <Anchor.Link href="#AllSides" title="四方分析" />
-            <Anchor.Link href="#GamblerFind" title="赌客发现" />
-            <Anchor.Link href="#AssociatedInfo" title="关联信息" />
-          </Anchor>
-          {/* </div> */}
+          <div style={{ background: 'blue', width: '100px' }}>
+            <Anchor targetOffset={50}>
+              <Anchor.Link href="#BasicInfo" title="基本信息" />
+              <Anchor.Link href="#AllSides" title="四方分析" />
+              <Anchor.Link href="#GamblerFind" title="赌客发现" />
+              <Anchor.Link href="#AssociatedInfo" title="关联信息" />
+            </Anchor>
+          </div>
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 export default React.memo(Details);
