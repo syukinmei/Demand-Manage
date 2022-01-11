@@ -19,14 +19,13 @@ const NewTable = (props) => {
     },
     [props.pager?.onPageChange, props.pager?.onPagesizeChange],
   );
-
   return (
     <div>
       {/* antd的table */}
       <Table
-        columns={props.Associated_A_columns}
-        dataSource={props.relatedGamble}
-        rowKey={(record) => record.id}
+        // columns={props.columns}
+        // dataSource={props.dataSource}
+        {...props}
       />
       <Pagination
         total={props.pager?.count || 0}

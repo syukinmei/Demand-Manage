@@ -1,32 +1,74 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Card, Table } from 'antd';
+import { Card, Tooltip } from 'antd';
 import { connect } from 'umi';
 import NewTable from './newTable';
 
-const Associated_A_columns = [
+const complaint_details_columns = [
   {
-    title: '赌博网站',
-    dataIndex: 'gambleWebsite',
-    key: 'gambleWebsite',
+    title: '投诉案件号',
+    dataIndex: 'complaintId',
+    key: 'complaintId',
+    width: 200,
+    fixed: true,
   },
   {
-    title: '赌博应用',
-    dataIndex: 'gambleApplication',
-    key: 'gambleApplication',
+    title: '收款方',
+    dataIndex: 'opname',
+    key: 'opname',
+    width: 400,
   },
   {
-    title: '最早时间',
-    dataIndex: 'earliestTime',
-    key: 'earliestTime',
-    render: (text) => <>{moment(text).format('YYYY-MM-DD HH:mm:ss')}</>,
-    sorter: (a, b) => a.earliestTime - b.earliestTime,
+    title: '涉及金额',
+    dataIndex: 'amount',
+    key: 'amount',
+    width: 150,
   },
   {
-    title: '最近时间',
-    dataIndex: 'recentTime',
-    key: 'recentTime',
-    render: (text) => <>{moment(text).format('YYYY-MM-DD HH:mm:ss')}</>,
-    sorter: (a, b) => a.recentTime - b.recentTime,
+    title: '时间',
+    dataIndex: 'optime',
+    key: 'optime',
+    width: 200,
+  },
+  {
+    title: '涉案描述',
+    dataIndex: 'describe',
+    key: 'describe',
+    width: 310,
+    onCell: (record, rowIndex) => {
+      return {
+        style: {
+          maxWidth: 310,
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          cursor: 'pointer',
+        },
+      };
+    },
+    render: (text) => (
+      <Tooltip placement="topLeft" title={text}>
+        {text}
+      </Tooltip>
+    ),
+  },
+];
+const moke = [
+  {
+    key: 1,
+    complaintId: '20888227324352100',
+    opname: '20888227324352100 杭州xx网络科技有限公司',
+    amount: '21300',
+    optime: '2019-12-23 14:00:00',
+    describe: '在QQ上认识的说可以通过这款名为”蚂蚁金服“的投资软件',
+  },
+  {
+    key: 2,
+    complaintId: '20888227324352100',
+    opname: '20888227324352100 杭州xx网络科技有限公司',
+    amount: '21300',
+    optime: '2019-12-23 16:31:20',
+    describe:
+      '通过淘宝咸鱼发布了几个孩子不用的物品，有人要买，找到我，说是我没有进行咸鱼消费者保障，需要进行绑定，发了二维码说是专用客服，那个客服一下让我交2000，说是证明消费者保障能力，一下说需要进行一步认证交5000假一赔三的能力，说是一分钟返回我账户，结果又说我支付宝没有绑定，需要绑定，又交14000，又说不成功要微信，又要交28000，才发现被骗。骗子发了工号和身份证，身份证看起来像假的。',
   },
 ];
 
@@ -83,9 +125,10 @@ const AssociatedInfo = (props) => {
         <br />
         <NewTable
           pager={pagerObj}
-          columns={Associated_A_columns}
-          dataSource={props.relatedGamble}
-          rowKey={(record) => record.id}
+          columns={complaint_details_columns}
+          dataSource={props.relatedGamble || moke}
+          // rowKey={(record) => record.id}
+          scroll={{ x: '100%' }}
         />
         {/* props.relatedGamble是后端给的数据 */}
       </Card>
