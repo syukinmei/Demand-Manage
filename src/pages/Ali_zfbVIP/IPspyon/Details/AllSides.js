@@ -12,6 +12,7 @@ import {
   Button,
 } from 'antd';
 import { Area } from '@ant-design/charts';
+import moment from 'moment';
 import {
   Chart_config,
   banker_columns,
@@ -74,11 +75,11 @@ const AllSides = () => {
             <Statistic
               title="最早案发时间"
               value={constTime}
-              formatter={(value) => value + '格式化'}
+              formatter={(value) => moment(value).format('YYYY-MM-DD HH:mm:ss')}
             />
           </div>
           <div>
-            <Statistic title="最近案发时间" value={'2021-08-23 19:23:00'} />
+            <Statistic title="最近案发时间" value={'2021-08-23'} />
           </div>
         </div>
         <h1>搜索功能</h1>
