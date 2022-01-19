@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 // import { Anchor, Row, Col } from 'antd';
 import './index.less';
+
+// 原理：拖动效果的实现基本都是dom操作来实现的，通过拖动分隔线，计算分隔线与浏览器边框的距离(left)，来实现拖动之后的不同宽度的计算；当拖动分隔线1时，计算元素框left和mid；当拖动分隔线2时，计算元素框mid和right；同时设置元素框最小值以防止元素框拖没了（其实是被遮住了）。使用SetCapture() 和 ReleaseCapture()的函数功能指定窗口里设置鼠标捕获。
+
 function miss2() {
   useEffect(() => {
     dragControllerDiv();
