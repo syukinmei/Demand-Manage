@@ -1,0 +1,42 @@
+.box ul,
+.box li {
+  list-style: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.box .box {
+  width: 800px;
+  height: 32px;
+  overflow: hidden;
+}
+.box .left {
+  width: calc(30% - 10px);
+  height: 100%;
+  background: skyblue;
+  float: left;
+}
+.box .resize {
+  width: 5px;
+  height: 100%;
+  cursor: w-resize;
+  float: left;
+}
+.box .resize2 {
+  width: 5px;
+  height: 100%;
+  cursor: w-resize;
+  float: left;
+}
+.box .right {
+  float: left;
+  width: 35%;
+  height: 100%;
+  background: tomato;
+}
+.box .mid {
+  float: left;
+  width: 35%;
+  height: 100%;
+  background: #f00;
+}
