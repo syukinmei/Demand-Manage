@@ -45,6 +45,11 @@ export const routes = [
         name: '布局',
         component: '@/pages/Ali_zfbVIP/missingJS',
       },
+      {
+        path: '/ali/Tianshu',
+        name: '天枢大脑',
+        component: '@/pages/Ali_zfbVIP/Tianshu',
+      },
     ],
   },
   {
