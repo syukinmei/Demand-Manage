@@ -11,86 +11,56 @@ function miss2() {
 
   const dragControllerDiv = function () {
     var resize = document.getElementsByClassName('resize');
-    var resize2 = document.getElementsByClassName('resize2');
     var left = document.getElementsByClassName('left');
-    var right = document.getElementsByClassName('right');
     var mid = document.getElementsByClassName('mid');
     var box = document.getElementsByClassName('box');
     for (let i = 0; i < resize.length; i++) {
+      // 鼠标按下事件
       resize[i].onmousedown = function (e) {
-        var startX = e.clientX;
-        resize[i].left = resize[i].offsetLeft;
+        //颜色改变提醒
+        resize[i].style.background = '#818181';
+        var startX = e.clientX; // 拨片距浏览器左侧距离
+        console.log(resize[i].left);
+        resize[i].left = resize[i].offsetLeft - 20;
+        // 鼠标拖动事件
         document.onmousemove = function (e) {
           var endX = e.clientX;
-          var rightW = right[i].offsetWidth;
-          var moveLen = resize[i].left + (endX - startX);
-          var maxT = box[i].clientWidth - resize[i].offsetWidth;
-          if (moveLen < 150) moveLen = 150;
-          if (moveLen > maxT - rightW - 150) moveLen = maxT - rightW - 150;
+          var moveLen = resize[i].left + (endX - startX); // （endx-startx）=移动的距离。resize[i].left+移动的距离=左边区域最后的宽度
+          var maxT = box[i].clientWidth - resize[i].offsetWidth; // 容器宽度 - 左边区域的宽度 = 右边区域的宽度
 
-          resize[i].style.left = moveLen;
+          if (moveLen < 100) moveLen = 100; // 左边区域的最小宽度为100px
+          if (moveLen > maxT - 150) moveLen = maxT - 150; //右边区域最小宽度为150px
+
+          resize[i].style.left = moveLen; // 设置左侧区域的宽度
 
           for (let j = 0; j < left.length; j++) {
             left[j].style.width = moveLen + 'px';
-            mid[j].style.width =
-              box[i].clientWidth - moveLen - rightW - 10 + 'px';
+            // mid[j].style.width = (box[i].clientWidth - moveLen - 10) + 'px';
+            mid[j].style.width = box[0].clientWidth - moveLen - 10 + 'px';
           }
         };
+        // 鼠标松开事件
         document.onmouseup = function (evt) {
+          //颜色恢复
+          resize[i].style.background = '#d6d6d6';
           document.onmousemove = null;
           document.onmouseup = null;
-          resize[i].releaseCapture && resize[i].releaseCapture();
+          resize[i].releaseCapture && resize[i].releaseCapture(); //当你不在需要继续获得鼠标消息就要应该调用ReleaseCapture()释放掉
         };
-        resize[i].setCapture && resize[i].setCapture();
-        return false;
-      };
-    }
-    for (let i = 0; i < resize2.length; i++) {
-      resize2[i].onmousedown = function (e) {
-        var startX = e.clientX;
-        resize2[i].left = resize2[i].offsetLeft;
-        document.onmousemove = function (e) {
-          var endX = e.clientX;
-          var leftW = left[i].offsetWidth;
-          var moveLen = resize2[i].left + (endX - startX) - leftW;
-          var maxT = box[i].clientWidth - resize2[i].offsetWidth - 5;
-          if (moveLen < 150) moveLen = 150;
-          if (moveLen > maxT - leftW - 150) moveLen = maxT - leftW - 150;
-
-          resize2[i].style.left = moveLen;
-          for (let j = 0; j < right.length; j++) {
-            mid[j].style.width = moveLen + 'px';
-            right[j].style.width =
-              box[i].clientWidth - moveLen - leftW - 10 + 'px';
-          }
-        };
-        document.onmouseup = function (evt) {
-          document.onmousemove = null;
-          document.onmouseup = null;
-          resize2[i].releaseCapture && resize2[i].releaseCapture();
-        };
-        resize2[i].setCapture && resize2[i].setCapture();
+        resize[i].setCapture && resize[i].setCapture(); //该函数在属于当前线程的指定窗口里设置鼠标捕获
         return false;
       };
     }
   };
-
   return (
     <div className="box">
-      <ul className="box">
-        <li className="left">西瓜</li>
-        <li className="resize"></li>
-        <li className="mid">备注2</li>
-        <li className="resize2"></li>
-        <li className="right">test</li>
-      </ul>
-      <ul className="box">
-        <li className="left">芒果</li>
-        <li className="resize"></li>
-        <li className="mid">备注</li>
-        <li className="resize2"></li>
-        <li className="right">test</li>
-      </ul>
+      <div className="left">左侧div内容</div>
+
+      <div className="resize" title="收缩侧边栏">
+        ⋮
+      </div>
+
+      <div className="mid">右侧div内容</div>
     </div>
   );
 }

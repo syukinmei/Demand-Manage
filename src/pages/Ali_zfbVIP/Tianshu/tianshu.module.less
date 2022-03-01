@@ -6,11 +6,14 @@
   margin: 1% 0px;
   overflow: hidden;
   box-shadow: -1px 9px 10px 3px rgba(0, 0, 0, 0.11);
+  // flex: 1;
+  display: flex;
 }
 
 /*左侧div样式*/
-.left {
-  width: calc(32% - 10px);
+.left,
+.right {
+  width: calc(19% - 10px);
   /*左侧初始化宽度*/
   height: 100%;
   background: #ffffff;
@@ -43,7 +46,8 @@
 /*右侧div'样式*/
 .mid {
   float: left;
-  width: 68%;
+  // width: 60%;
+  flex: 1;
   /*右侧初始化宽度*/
   height: 100%;
   background: #fff;

@@ -1,44 +1,54 @@
+import { debounce } from '@antv/xflow-core/es/common/utils';
 import React, { useEffect } from 'react';
 import styles from './tianshu.module.less';
+
 function missing() {
   const dragControllerDiv = function () {
-    var resize = document.getElementsByClassName(styles.resize);
-    var left = document.getElementsByClassName(styles.left);
-    var mid = document.getElementsByClassName(styles.mid);
-    var box = document.getElementsByClassName(styles.box);
+    const resize = document.getElementsByClassName(styles.resize);
+    const left = document.getElementsByClassName(styles.left);
+    const mid = document.getElementsByClassName(styles.mid);
+    const right = document.getElementsByClassName(styles.right);
+    // const box = document.getElementsByClassName(styles.box);
+
+    // 给拖住区添加事件
     for (let i = 0; i < resize.length; i++) {
-      // 鼠标按下事件
+      // 鼠标点击 - 记录开始的坐标信息
       resize[i].onmousedown = function (e) {
-        //颜色改变提醒
+        // 颜色改变提醒
         resize[i].style.background = '#818181';
-        var startX = e.clientX;
-        resize[i].left = resize[i].offsetLeft;
-        // 鼠标拖动事件
+        const startX = e.clientX; // 记录起始位置
+        resize[i].left = resize[i].offsetLeft - 20;
+        console.log(resize[i].left);
+        // 提前记录mid right 宽度
+        const midWidth = mid[0].offsetWidth;
+        const rightWidth = right[0].offsetWidth;
+        // console.log(resize[i].offsetLeft, '宽度需要减20')
+        // 鼠标拖动
         document.onmousemove = function (e) {
-          var endX = e.clientX;
-          var moveLen = resize[i].left + (endX - startX); // （endx-startx）=移动的距离。resize[i].left+移动的距离=左边区域最后的宽度
-          var maxT = box[i].clientWidth - resize[i].offsetWidth; // 容器宽度 - 左边区域的宽度 = 右边区域的宽度
-
-          if (moveLen < 32) moveLen = 32; // 左边区域的最小宽度为32px
-          if (moveLen > maxT - 150) moveLen = maxT - 150; //右边区域最小宽度为150px
-
-          resize[i].style.left = moveLen; // 设置左侧区域的宽度
-
-          for (let j = 0; j < left.length; j++) {
-            left[j].style.width = moveLen + 'px';
-            mid[j].style.width = box[i].clientWidth - moveLen - 10 + 'px';
+          const endX = e.clientX; // 外层main有20内边距
+          // endX - startX = 拖动距离。resize[i].left + 拖动距离 = 左边区域最后的宽度
+          let finalWidth = resize[i].left + (endX - startX);
+          // 不知道是什么
+          // const maxT = box[0].clientWidth - resize[i].offsetLeft;
+          if (finalWidth < 50) finalWidth = 50; // 设置左边区域的最小宽度为50px
+          // resize[i].style.left = finalWidth;
+          // 计算mid需要变化的宽度
+          let midMove = finalWidth - resize[i].left;
+          if (i === 0) {
+            left[0].style.width = finalWidth + 'px';
+            mid[0].style.width = midWidth - midMove + 'px';
+          } else if (i === 1) {
+            mid[0].style.width = midWidth + midMove + 'px';
+            right[0].style.width = rightWidth - (endX - startX) + 'px';
           }
         };
-        // 鼠标松开事件
-        document.onmouseup = function (evt) {
-          //颜色恢复
+        // 鼠标松开
+        document.onmouseup = function (e) {
+          // 颜色恢复
           resize[i].style.background = '#d6d6d6';
           document.onmousemove = null;
           document.onmouseup = null;
-          resize[i].releaseCapture && resize[i].releaseCapture(); //当你不在需要继续获得鼠标消息就要应该调用ReleaseCapture()释放掉
         };
-        resize[i].setCapture && resize[i].setCapture(); //该函数在属于当前线程的指定窗口里设置鼠标捕获
-        return false;
       };
     }
   };
@@ -62,6 +72,12 @@ function missing() {
         mid
         {/* 中间div内容 */}
       </div>
+
+      <div className={styles.resize} title="收缩侧边栏">
+        ⋮
+      </div>
+
+      <div className={styles.right}>right</div>
     </div>
   );
 }
