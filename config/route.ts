@@ -50,6 +50,11 @@ export const routes = [
         name: '天枢大脑',
         component: '@/pages/Ali_zfbVIP/Tianshu',
       },
+      {
+        path: '/ali/no_jurisdiction',
+        name: '暂无权限码',
+        component: '@/pages/Ali_zfbVIP/NoJurisdiction/index.jsx',
+      },
     ],
   },
   {
